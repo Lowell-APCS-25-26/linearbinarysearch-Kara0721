@@ -24,19 +24,43 @@ public class Sketch {
     new Item(19967, 45)
   };                             
   public int linearSearch(int catNumToFind){
-    //complete this method
+      for(int i = 0; i < store.length; i++)
+        if (store[i] == catNumToFind)
+           return i;
     return -1;
   }
   public int recursiveLinearSearch(int catNumToFind, int startIndex){
-    //complete this method
-    return -1;
+      if (store[startIndex] == catNumToFind)
+       return startIndex;
+      else if (startIndex == store.length-1)
+        return -1;
+      else return recursiveLinearSearch (score, target, startIndex+1);
   }
   public int binarySearch(int catNumToFind){
-    //complete this method    
-    return -1;
+      int high = store.length-1;
+      int low = 0;
+  while(low<=high){
+    int guess = (low+high)/2;
+  if (store[guess] == catNumToFind)
+    return guess;
+  else if (store[guess].getCatNum() > catNumToFind){
+    high = guess-1;
+  }
+  else {
+    low = guess+1;
+  }
+  }
+  return -1;    
   }
   public int recursiveBinarySearch(int catNumToFind, int nLow, int nHigh){
-    //complete this method    
+     int guess = (low+high)/2;
+   if(low>high)
+    return -1;
+  else if (store[guess] == catNumToFind)
+    return guess;
+  else if (store[guess].getCatNum()< catNumToFind)
+    return recursiveBinarySearch(score, catNumToFind, guess+1, high);
+  else return recursiveBinarySearch(score, catNumToFind, low, guess-1);   
     return -1;
   }
   public void tester(){
